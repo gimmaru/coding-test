@@ -7,24 +7,11 @@ class ListNode:
         self.next = next
 
 class Solution:
-    # def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-    #     if head and head.next:
-    #         temp = ListNode(head.val, head.next.next)
-    #         head = head.next
-    #         head.next = temp
-    #         head.next.next = self.swapPairs(head.next.next)
-    #     return head
-    
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        root = prev = ListNode(None)
-        prev.next = head
-        while head and head.next:
+        b = head
+        if head and head.next:
             b = head.next
             head.next = b.next
+            head.next = self.swapPairs(head.next)
             b.next = head
-
-            prev.next = b
-
-            head = head.next
-            prev = prev.next.next
-        return root.next
+        return b

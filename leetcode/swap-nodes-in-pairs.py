@@ -8,10 +8,9 @@ class ListNode:
 
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        b = head
         if head and head.next:
-            b = head.next
-            head.next = b.next
-            head.next = self.swapPairs(head.next)
-            b.next = head
-        return b
+            p = head.next
+            head.next = self.swapPairs(p.next)
+            p.next = head
+            return p
+        return head

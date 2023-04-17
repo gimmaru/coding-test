@@ -18,15 +18,13 @@ class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         root = prev = ListNode(None)
         prev.next = head
-        while prev.next and prev.next.next:
-            a = prev.next
-            
-            b = a.next
-            a.next = b.next
-            b.next = a
+        while head and head.next:
+            b = head.next
+            head.next = b.next
+            b.next = head
 
             prev.next = b
 
+            head = head.next
             prev = prev.next.next
-
         return root.next

@@ -4,14 +4,14 @@ def permute(N, M):
 
     def dfs(nums, output=[]):
         if len(output) == M:
-            result.append(output)
+            result.append(output[:])
             return
 
         for num in nums:
             output.append(num)
             next_nums = nums[:]
             next_nums.remove(num)
-            dfs(next_nums, output[:])
+            dfs(next_nums, output)
             output.pop()
         
     dfs(nums)

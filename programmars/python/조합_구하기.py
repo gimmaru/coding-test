@@ -7,12 +7,12 @@ def combine(N, M):
 
     def dfs(nums, output=[]):
         if len(output) == M:
-            result.append(output)
+            result.append(output[:])
             return
         
-        for num in nums:
+        for idx, num in enumerate(nums, 1):
             output.append(num)
-            dfs(nums[1:], output[:])
+            dfs(nums[idx:], output)
             output.pop()
     
     dfs(nums)
@@ -20,5 +20,5 @@ def combine(N, M):
 
 
 if __name__ == "__main__":
-    N, M = 4, 1
+    N, M = 4, 2
     print(combine(N, M))
